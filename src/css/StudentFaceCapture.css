@@ -1,0 +1,123 @@
+/* ==========================================
+   Student Face Capture - Compact Styling
+   ========================================== */
+
+.face-capture-container {
+  max-width: 500px; /* ⬅️ Reduced from 650px */
+  margin: 50px auto;
+  background: #f8f9fa;
+  border-radius: 12px;
+  padding: 25px 30px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  font-family: "Poppins", sans-serif;
+  transition: all 0.3s ease;
+}
+
+.face-capture-container:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
+}
+
+.face-capture-title {
+  text-align: center;
+  color: #2d3748;
+  font-size: 19px;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.face-capture-subtitle {
+  text-align: center;
+  color: #6c757d;
+  font-size: 13px;
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+.face-capture-label {
+  font-weight: 600;
+  font-size: 13px;
+  color: #374151;
+  margin-bottom: 5px;
+  display: block;
+}
+
+/* Dropdown (select) styling */
+.face-capture-select {
+  width: 90%; /* ⬅️ Reduced width */
+  display: block;
+  margin: 0 auto;
+  padding: 5px 8px;
+  height: 34px; /* ⬅️ Slightly smaller height */
+  border-radius: 6px;
+  border: 2px solid #ced4da;
+  font-size: 13px;
+  color: #2d3748;
+  background-color: #fff;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  outline: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.face-capture-select:hover {
+  border-color: #86b7fe;
+}
+
+.face-capture-select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15);
+}
+
+/* Compact spacing */
+.face-capture-field {
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+/* Selected info box */
+.face-capture-info {
+  background: #e9f5ff;
+  border: 1px solid #b8e1ff;
+  color: #004085;
+  font-size: 13px;
+  padding: 6px 10px;
+  text-align: center;
+  border-radius: 6px;
+  margin-top: 10px;
+}
+
+/* Responsive behavior */
+@media (max-width: 768px) {
+  .face-capture-container {
+    max-width: 90%;
+    padding: 20px;
+  }
+
+  .face-capture-select {
+    width: 100%;
+    font-size: 12px;
+    height: 32px;
+  }
+}
+
+.popup-message {
+  position: fixed;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%) scale(0.9);
+  background-color: #4caf50;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: all 0.3s ease;
+  z-index: 9999;
+  font-weight: 500;
+}
+.popup-message.show {
+  opacity: 1;
+  transform: translateX(-50%) scale(1);
+}
+.popup-message.error {
+  background-color: #e74c3c;
+}

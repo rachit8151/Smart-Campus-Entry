@@ -1,0 +1,29 @@
+/* src/css/Signup.css */
+
+.signup-container {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.signup-box {
+  background-color: #fff;
+  padding: 30px 40px;
+  border-radius: 8px;
+  max-width: 500px;           /* ✅ Controls field width */
+  width: 100%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.signup-box h2 {
+  text-align: center;
+  margin-bottom: 25px;
+}
+
+.input-box {
+  border: 1px solid #007bff !important;  /* ✅ Blue border */
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 15px;
+}

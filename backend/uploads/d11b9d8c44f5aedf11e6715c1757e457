@@ -1,0 +1,5 @@
+enrollmentNo,firstName,lastName,gender,dob,aadharNo,email,phone,address,city,district,state,pincode,category,nationality,fatherName,motherName,schoolName,religion
+202206100110006,Ruchit,Patel,Male,2005-07-15,604395000001,rachit8151@gmail.com,9081616891,Prabhudarsan,Surat,Surat,Gujarat,395005,OPEN,Indian,Khushalbhai,Dharmishthaben,Lokmanya Vidyalaya,Hindu
+202206100110007,Kenu,Patel,Male,2003-08-10,604395000002,22bmiit041@gmail.com,9081616892,Kenal Road,Surat,Surat,Gujarat,395005,OPEN,Indian,Vijaybhai,Kanchanben,Saraswati Vidyalaya,Hindu
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
