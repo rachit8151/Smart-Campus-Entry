@@ -62,7 +62,7 @@ router.put("/profile/:sgId", upload.single("photo"), async (req, res) => {
     if (!existing)
       return res.status(404).json({ success: false, message: "Security Guard not found" });
 
-    // ✅ Optional: lock logic if you want to prevent repeated edits
+    // ✅ Prevent edit if already locked
     if (existing.isProfileLocked) {
       return res.status(403).json({
         success: false,
@@ -74,14 +74,17 @@ router.put("/profile/:sgId", upload.single("photo"), async (req, res) => {
     if (req.file) {
       const newPath = `/uploads/guard_photos/${req.file.filename}`;
       updateData.photoUrl = newPath;
-
       if (existing.photoUrl && fs.existsSync(`.${existing.photoUrl}`)) {
         fs.unlinkSync(`.${existing.photoUrl}`);
       }
     }
 
-    // ✅ Optionally mark profile locked after first update
-    updateData.isProfileLocked = true;
+    // ✅ Lock only when all key fields filled
+    const requiredFields = ["firstName", "lastName", "gender", "dob", "aadharNo"];
+    const allFilled = requiredFields.every(
+      (f) => updateData[f] && updateData[f].toString().trim() !== ""
+    );
+    if (allFilled) updateData.isProfileLocked = true;
 
     const guard = await SecurityGuard.findOneAndUpdate({ sgId }, updateData, {
       new: true,
@@ -90,7 +93,9 @@ router.put("/profile/:sgId", upload.single("photo"), async (req, res) => {
 
     res.json({
       success: true,
-      message: "Security Guard profile updated successfully.",
+      message: guard.isProfileLocked
+        ? "Profile updated and locked successfully."
+        : "Profile updated successfully.",
       guard,
     });
   } catch (err) {

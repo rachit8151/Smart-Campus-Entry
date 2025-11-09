@@ -5,7 +5,9 @@ import "../css/Profile.css";
 import { useNavigate } from "react-router-dom";
 
 const GuardProfile = ({ showAlert }) => {
+  const [isLocked, setIsLocked] = useState(false);
   const navigate = useNavigate();
+
   const API_BASE = import.meta.env.VITE_API_URL || "http://localhost:3000";
   const sgId = sessionStorage.getItem("sgId");
 
@@ -36,6 +38,7 @@ const GuardProfile = ({ showAlert }) => {
         const { data } = await axios.get(`${API_BASE}/api/securityGuard/profile/${sgId}`);
         if (data.success && data.guard) {
           setFormData(data.guard);
+          setIsLocked(data.guard.isProfileLocked);
           if (data.guard.photoUrl) {
             const fullUrl = data.guard.photoUrl.startsWith("http")
               ? data.guard.photoUrl
@@ -295,11 +298,18 @@ const GuardProfile = ({ showAlert }) => {
             </div>
           </div>
 
-          <div className="text-center">
-            <button type="submit" className="btn btn-primary px-4">
-              Update Profile
-            </button>
-          </div>
+          {!isLocked ? (
+            <div className="text-center">
+              <button type="submit" className="btn btn-primary px-4">
+                Update Profile
+              </button>
+            </div>
+          ) : (
+            <p className="text-center text-success fw-bold mt-3">
+              ✅ Profile locked. Contact admin to modify details.
+            </p>
+          )}
+
         </form>
       </div>
     </div>

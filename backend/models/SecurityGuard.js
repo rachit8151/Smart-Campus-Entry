@@ -64,6 +64,10 @@ const SecurityGuardSchema = new mongoose.Schema(
       type: Boolean,
       default: true, // active by default
     },
+    isProfileLocked: { 
+      type: Boolean, 
+      default: false 
+    },
     createdAt: {
       type: Date,
       default: Date.now,
